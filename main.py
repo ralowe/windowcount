@@ -15,8 +15,8 @@ def printHelp():
     print("Options:")
     print("\t-g\t\tSet the genome chromosome sizes")
     print("\t-d\t\tDirectory to search for BAM files")
-    print("\t-w\t\tSize of window [Int]")
-    print("\t-s\t\tAmount of shift between each window [Int]")
+    print("\t-w\t\tSize of window [Int: Default 100]")
+    print("\t-s\t\tAmount of shift between each window [Int: Default 50]")
     exit()
 
 def parseChromSizes(filename):
@@ -47,7 +47,6 @@ def windowcount(chromsizes,size,sep,files):
                 string+=f"\t{c}"
             print(string)
         p+=sep
-    exit()
     
 def getfiles(direc):
     out=[]
@@ -61,6 +60,8 @@ def getfiles(direc):
         
 def main():
     myargs = getopts(argv)
+    w=100
+    s=50
     if '-g' in myargs: 
         ref=myargs["-g"]
     else:
@@ -69,10 +70,14 @@ def main():
         direc=myargs["-d"]
     else:
         printHelp()
+    if '-w' in myargs: 
+        w=int(myargs["-w"])
+    if '-s' in myargs: 
+        s=int(myargs["-s"])
     cs=parseChromSizes(ref)
     files=getfiles(direc)
     for k in cs:
-        windowcount(k,100,50,files)
+        windowcount(k,w,s,files)
         
 if __name__=="__main__":
     main()
