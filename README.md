@@ -29,13 +29,13 @@ Full usage can be found by running
 
 `python3 main.py`
 
-`
+```
 Usage: windowcount -g <chromosome sizes> -d <directory of BAMs>
 Options:
 	-g		Set the genome chromosome sizes
 	-d		Directory to search for BAM files
 	-w		Size of window [Int: Default 100]
 	-s		Amount of shift between each window [Int: Default 50]
-` 
+```
 
 
