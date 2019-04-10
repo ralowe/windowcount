@@ -67,7 +67,9 @@ def extractreadcounts(chrom,spos,epos,sample,buffer):
     
 def windowcount(chrom,l,size,sep,files,outfile):
     p=0
-    readbuffers=[[]]*len(files)
+    readbuffers=[]
+    for k in range(len(files)):
+        readbuffers.append([])
     #Only allow complete windows starting from 0
     while (p+size)<l:
         counts=[]
