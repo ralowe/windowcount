@@ -8,16 +8,20 @@ class BamFile:
     def __init__(self,filename):
         self.itr = pysam.AlignmentFile(filename, "rb").fetch()
         self.readnext()
+        self.eof = False
     
     def currentRead(self):
         return(self.r)
         
     def readnext(self):
-        while True:
-            self.r=next(self.itr)
-            if self.r.next_reference_start>self.r.reference_start:
-                self.frag=[self.r.reference_name,self.r.reference_start,self.r.reference_start+self.r.template_length,self.r.query_name]
-                break
+        while True and not self.eof:
+            try:
+                self.r=next(self.itr)
+                if self.r.next_reference_start>self.r.reference_start:
+                    self.frag=[self.r.reference_name,self.r.reference_start,self.r.reference_start+self.r.template_length,self.r.query_name]
+                    break
+            except StopIteration:
+                self.eof = True
         
     def getfragment(self):
         return self.frag
