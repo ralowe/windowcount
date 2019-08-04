@@ -13,7 +13,7 @@ Then clone repository
 
 `git clone https://github.com/ralowe/windowcount.git`
 
-## Running 
+## Running
 
 `windowcount` requires 2 inputs. A chromosome sizes file and a directory location of bam files.
 
@@ -36,6 +36,5 @@ Options:
 	-d		Directory to search for BAM files
 	-w		Size of window [Int: Default 100]
 	-s		Amount of shift between each window [Int: Default 50]
+	-o    Output filename [String: Default counts.txt]
 ```
-
-

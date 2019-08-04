@@ -68,6 +68,7 @@ def print_help():
     print("\t-d\t\tDirectory to search for BAM files")
     print("\t-w\t\tSize of window [Int: Default 100]")
     print("\t-s\t\tAmount of shift between each window [Int: Default 50]")
+    print("\t-o\t\tOutput filename [String: Default counts.txt]")
     exit()
 
 def parse_chrom_sizes(filename):
